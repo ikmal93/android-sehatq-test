@@ -83,15 +83,10 @@ class ProductDetailActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        Log.d("KAKA", "SUCCESS")
                     }
                     Status.ERROR -> {
-                        Log.d("KAKA", "ERROR")
                     }
                     Status.LOADING -> {
-                        binding.apply {
-
-                        }
                     }
                 }
             }

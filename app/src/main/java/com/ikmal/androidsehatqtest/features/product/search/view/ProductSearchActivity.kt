@@ -29,10 +29,10 @@ class ProductSearchActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(ApiBuilder.apiService, DatabaseBuilder.getInstance(this))
-        ).get(ProductSearchViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(ApiBuilder.apiService, DatabaseBuilder.getInstance(this))
+//        ).get(ProductSearchViewModel::class.java)
     }
 
     private fun initViewBinding() {
