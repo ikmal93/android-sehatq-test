@@ -14,6 +14,7 @@ import com.ikmal.androidsehatqtest.core.database.DatabaseBuilder
 import com.ikmal.androidsehatqtest.core.network.ApiBuilder
 import com.ikmal.androidsehatqtest.core.utils.Status
 import com.ikmal.androidsehatqtest.core.viewmodel.ViewModelFactory
+import com.ikmal.androidsehatqtest.data.api.model.ProductPromo
 import com.ikmal.androidsehatqtest.databinding.FragmentProfileBinding
 import com.ikmal.androidsehatqtest.features.product.detail.ProductDetailActivity
 import com.ikmal.androidsehatqtest.features.profile.view.adapter.ProfileAdapter
@@ -59,13 +60,22 @@ class ProfileFragment : Fragment() {
                                 profileRecycler.layoutManager =
                                     LinearLayoutManager(requireContext())
                                 profileAdapter = ProfileAdapter(histories) {
-//                                    startActivity(
-//                                        Intent(
-//                                            requireContext(),
-//                                            ProductDetailActivity::class.java
-//                                        )
-//                                            .putExtra(IntentKey.PRODUCT, Pr)
-//                                    )
+                                    startActivity(
+                                        Intent(
+                                            requireContext(),
+                                            ProductDetailActivity::class.java
+                                        )
+                                            .putExtra(
+                                                IntentKey.PRODUCT, ProductPromo(
+                                                    id = it.id,
+                                                    description = it.description,
+                                                    imageUrl = it.imageUrl,
+                                                    loved = it.loved,
+                                                    price = it.price,
+                                                    title = it.title
+                                                )
+                                            )
+                                    )
                                 }
                                 profileRecycler.adapter = profileAdapter
                             }

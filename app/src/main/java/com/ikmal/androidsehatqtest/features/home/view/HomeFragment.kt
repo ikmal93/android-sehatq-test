@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikmal.androidsehatqtest.core.constant.IntentKey.PRODUCT
+import com.ikmal.androidsehatqtest.core.constant.IntentKey.PRODUCT_LIST
 import com.ikmal.androidsehatqtest.core.database.AppDatabase
 import com.ikmal.androidsehatqtest.core.database.DatabaseBuilder
 import com.ikmal.androidsehatqtest.core.network.ApiBuilder
 import com.ikmal.androidsehatqtest.core.utils.Status.*
 import com.ikmal.androidsehatqtest.core.viewmodel.ViewModelFactory
+import com.ikmal.androidsehatqtest.data.api.model.ProductPromo
 import com.ikmal.androidsehatqtest.databinding.FragmentHomeBinding
 import com.ikmal.androidsehatqtest.features.home.view.adapter.CategoryAdapter
 import com.ikmal.androidsehatqtest.features.home.view.adapter.ProductAdapter
@@ -29,6 +31,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var productAdapter: ProductAdapter
+
+    private lateinit var productList: List<ProductPromo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +64,8 @@ class HomeFragment : Fragment() {
                         resource.data?.let { dataResponse ->
                             binding?.apply {
                                 setLoading(false)
+
+                                productList = dataResponse[0].data.productPromo
 
                                 homeCategoryRecycler.setHasFixedSize(true)
                                 homeCategoryRecycler.layoutManager = LinearLayoutManager(
@@ -110,7 +116,9 @@ class HomeFragment : Fragment() {
     private fun setupListener() {
         binding?.apply {
             homeSearchCard.setOnClickListener {
-                startActivity(Intent(requireContext(), ProductSearchActivity::class.java))
+                startActivity(
+                    Intent(requireContext(), ProductSearchActivity::class.java)
+                )
             }
         }
     }

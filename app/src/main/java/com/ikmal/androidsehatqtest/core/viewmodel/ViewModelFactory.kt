@@ -24,7 +24,7 @@ class ViewModelFactory(private val apiService: ApiService, private val appDataba
             ) as T
         }
         if (modelClass.isAssignableFrom(ProductSearchViewModel::class.java)) {
-//            return ProductSearchViewModel(ProductPromoRepositoryImpl(appDatabase)) as T
+            return ProductSearchViewModel(ProductPromoRepositoryImpl(appDatabase)) as T
         }
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(HistoryRepositoryImpl(appDatabase)) as T
