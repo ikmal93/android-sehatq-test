@@ -3,6 +3,8 @@ package com.ikmal.androidsehatqtest.features.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FirebaseAuth
 import com.ikmal.androidsehatqtest.R
 import com.ikmal.androidsehatqtest.databinding.ActivityHomeBinding
 import com.ikmal.androidsehatqtest.features.cart.CartFragment
@@ -62,5 +64,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.navView.setOnItemReselectedListener {
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
     }
 }
