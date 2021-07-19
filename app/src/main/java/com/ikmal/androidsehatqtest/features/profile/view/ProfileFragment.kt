@@ -56,29 +56,38 @@ class ProfileFragment : Fragment() {
                     Status.SUCCESS -> {
                         resource.data?.let { histories ->
                             binding?.apply {
-                                profileRecycler.setHasFixedSize(true)
-                                profileRecycler.layoutManager =
-                                    LinearLayoutManager(requireContext())
-                                profileAdapter = ProfileAdapter(histories) {
-                                    startActivity(
-                                        Intent(
-                                            requireContext(),
-                                            ProductDetailActivity::class.java
-                                        )
-                                            .putExtra(
-                                                IntentKey.PRODUCT, ProductPromo(
-                                                    id = it.id,
-                                                    description = it.description,
-                                                    imageUrl = it.imageUrl,
-                                                    loved = it.loved,
-                                                    price = it.price,
-                                                    title = it.title
-                                                )
+                                if (histories.isNotEmpty()) {
+                                    baseEmptyTrx.visibility = View.GONE
+                                    profileRecycler.visibility = View.VISIBLE
+
+                                    profileRecycler.setHasFixedSize(true)
+                                    profileRecycler.layoutManager =
+                                        LinearLayoutManager(requireContext())
+                                    profileAdapter = ProfileAdapter(histories) {
+                                        startActivity(
+                                            Intent(
+                                                requireContext(),
+                                                ProductDetailActivity::class.java
                                             )
-                                    )
+                                                .putExtra(
+                                                    IntentKey.PRODUCT, ProductPromo(
+                                                        id = it.id,
+                                                        description = it.description,
+                                                        imageUrl = it.imageUrl,
+                                                        loved = it.loved,
+                                                        price = it.price,
+                                                        title = it.title
+                                                    )
+                                                )
+                                        )
+                                    }
+                                    profileRecycler.adapter = profileAdapter
+                                } else {
+                                    baseEmptyTrx.visibility = View.VISIBLE
+                                    profileRecycler.visibility = View.GONE
                                 }
-                                profileRecycler.adapter = profileAdapter
                             }
+
                         }
                     }
                     Status.ERROR -> {
