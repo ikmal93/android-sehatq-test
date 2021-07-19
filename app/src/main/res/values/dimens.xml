@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--LOGIN DP-->
+    <dimen name="login_margin_title_top">64dp</dimen>
+    <dimen name="login_margin_btn_top">64dp</dimen>
+    <dimen name="login_btn">58dp</dimen>
+    <dimen name="login_side_margin">48dp</dimen>
+
+    <!--LOGIN SP-->
+    <dimen name="login_title">24sp</dimen>
+    <dimen name="login_btn_text">14sp</dimen>
+    <dimen name="login_form_text">14sp</dimen>
+
+    <!--HOME-->
+    <dimen name="home_list_title">18sp</dimen>
+    <dimen name="home_category_list_name">14sp</dimen>
+
+    <!--PRODUCT DETAIL-->
+    <dimen name="app_bar_height">280dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+</resources>
