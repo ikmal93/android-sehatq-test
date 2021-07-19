@@ -1,11 +1,10 @@
 package com.ikmal.androidsehatqtest.features.product.search.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.*
-import com.google.gson.Gson
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ikmal.androidsehatqtest.core.utils.Resource
-import com.ikmal.androidsehatqtest.data.api.model.ProductPromo
-import com.ikmal.androidsehatqtest.data.api.repository.DataRepository
 import com.ikmal.androidsehatqtest.data.local.model.entity.productpromo.ProductPromoEntity
 import com.ikmal.androidsehatqtest.data.local.repository.product.ProductPromoRepository
 import kotlinx.coroutines.launch
@@ -47,7 +46,6 @@ class ProductSearchViewModel(
 
     private fun refreshProduct() {
         val filterKeywordValue = filterKeyword.value ?: ""
-
         val filteredPromo = promoProducts.value?.data?.let {
             it.filter { data ->
                 data.title.lowercase().contains(filterKeywordValue.lowercase())
