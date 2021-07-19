@@ -1,4 +1,4 @@
-package com.ikmal.androidsehatqtest.features.home.data.api.data
+package com.ikmal.androidsehatqtest.data.api.model
 
 data class DataResponse(
     val data: Data

@@ -1,6 +1,6 @@
-package com.ikmal.androidsehatqtest.features.home.data.api.service
+package com.ikmal.androidsehatqtest.data.api.service
 
-import com.ikmal.androidsehatqtest.features.home.data.api.data.DataResponse
+import com.ikmal.androidsehatqtest.data.api.model.DataResponse
 import retrofit2.http.GET
 
 interface ApiService {

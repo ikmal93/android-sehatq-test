@@ -1,10 +1,10 @@
-package com.ikmal.androidsehatqtest.ui.login
+package com.ikmal.androidsehatqtest.features.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ikmal.androidsehatqtest.databinding.ActivityLoginBinding
-import com.ikmal.androidsehatqtest.ui.base.HomeActivity
+import com.ikmal.androidsehatqtest.features.base.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 

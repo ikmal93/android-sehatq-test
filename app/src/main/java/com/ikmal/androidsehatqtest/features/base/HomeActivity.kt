@@ -1,14 +1,14 @@
-package com.ikmal.androidsehatqtest.ui.base
+package com.ikmal.androidsehatqtest.features.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ikmal.androidsehatqtest.R
 import com.ikmal.androidsehatqtest.databinding.ActivityHomeBinding
-import com.ikmal.androidsehatqtest.ui.cart.CartFragment
-import com.ikmal.androidsehatqtest.ui.feed.FeedFragment
-import com.ikmal.androidsehatqtest.ui.home.HomeFragment
-import com.ikmal.androidsehatqtest.ui.profile.ProfileFragment
+import com.ikmal.androidsehatqtest.features.cart.CartFragment
+import com.ikmal.androidsehatqtest.features.feed.FeedFragment
+import com.ikmal.androidsehatqtest.features.home.view.HomeFragment
+import com.ikmal.androidsehatqtest.features.profile.view.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
 

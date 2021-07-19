@@ -1,4 +1,4 @@
-package com.mindorks.retrofit.coroutines.utils
+package com.ikmal.androidsehatqtest.core.utils
 
 enum class Status {
     SUCCESS,

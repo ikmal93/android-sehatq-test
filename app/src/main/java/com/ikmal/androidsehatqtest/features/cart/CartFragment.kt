@@ -1,4 +1,4 @@
-package com.ikmal.androidsehatqtest.ui.cart
+package com.ikmal.androidsehatqtest.features.cart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

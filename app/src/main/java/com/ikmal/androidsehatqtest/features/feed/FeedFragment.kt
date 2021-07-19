@@ -1,4 +1,4 @@
-package com.ikmal.androidsehatqtest.ui.feed
+package com.ikmal.androidsehatqtest.features.feed
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

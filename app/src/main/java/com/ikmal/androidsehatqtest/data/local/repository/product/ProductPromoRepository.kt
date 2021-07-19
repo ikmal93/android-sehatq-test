@@ -1,4 +1,4 @@
-package com.ikmal.androidsehatqtest.data.local.repository
+package com.ikmal.androidsehatqtest.data.local.repository.product
 
 import com.ikmal.androidsehatqtest.data.local.model.entity.productpromo.ProductPromoEntity
 

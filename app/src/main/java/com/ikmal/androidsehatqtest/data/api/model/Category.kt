@@ -1,6 +1,4 @@
-package com.ikmal.androidsehatqtest.features.home.data.api.data
-
-import java.io.Serializable
+package com.ikmal.androidsehatqtest.data.api.model
 
 data class Category(
     val id: Int,
