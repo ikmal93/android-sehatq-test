@@ -41,5 +41,7 @@
     <string name="product_search_description">Description</string>
     <string name="product_search_not_found">Search not found, please try another keyword</string>
 
+    <string name="facebook_app_id">799221880697267</string>
+    <string name="fb_login_protocol_scheme">fb799221880697267</string>
 
 </resources>

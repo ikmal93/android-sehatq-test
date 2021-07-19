@@ -10,4 +10,7 @@
 
     <color name="view">#E6E6E6</color>
     <color name="baseText">#6D6E71</color>
+
+    <color name="redGoogle">#DE4B39</color>
+    <color name="blueFacebook">#3C5997</color>
 </resources>

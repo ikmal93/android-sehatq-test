@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986503787568",
+    "project_id": "android-auth-dd17e",
+    "storage_bucket": "android-auth-dd17e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986503787568:android:f51e341ef2b1dd118b29f5",
+        "android_client_info": {
+          "package_name": "com.ikmal.androidsehatqtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986503787568-nhoij477fqkgkdem0rh9tbcjf0rn4bj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARH2-nLvC6M0K0B-C7NwFbfnWrVFdU-GY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986503787568-nhoij477fqkgkdem0rh9tbcjf0rn4bj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
