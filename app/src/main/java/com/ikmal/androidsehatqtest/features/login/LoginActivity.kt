@@ -9,6 +9,7 @@ import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,6 +23,8 @@ import com.google.firebase.ktx.Firebase
 import com.ikmal.androidsehatqtest.R
 import com.ikmal.androidsehatqtest.databinding.ActivityLoginBinding
 import com.ikmal.androidsehatqtest.features.base.HomeActivity
+import java.util.*
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -70,21 +73,45 @@ class LoginActivity : AppCompatActivity() {
                 signIn()
             }
 
-            loginFbButton.setReadPermissions("email", "public_profile")
-            loginFbButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-                override fun onSuccess(loginResult: LoginResult) {
-                    Log.d(TAG, "facebook:onSuccess:$loginResult")
-                    handleFacebookAccessToken(loginResult.accessToken)
-                }
+            LoginManager.getInstance().registerCallback(callbackManager,
+                object : FacebookCallback<LoginResult?> {
+                    override fun onSuccess(loginResult: LoginResult?) {
+                        Log.d(TAG, "facebook:onSuccess:$loginResult")
+                        handleFacebookAccessToken(loginResult?.accessToken)
+                    }
 
-                override fun onCancel() {
-                    Log.d(TAG, "facebook:onCancel")
-                }
+                    override fun onCancel() {
+                        Toast.makeText(this@LoginActivity, "Login Cancel", Toast.LENGTH_LONG).show()
+                    }
 
-                override fun onError(error: FacebookException) {
-                    Log.d(TAG, "facebook:onError", error)
-                }
-            })
+                    override fun onError(exception: FacebookException) {
+                        Toast.makeText(this@LoginActivity, exception.message, Toast.LENGTH_LONG)
+                            .show()
+                    }
+                })
+
+            loginFacebookBtn.setOnClickListener {
+                LoginManager.getInstance().logInWithReadPermissions(
+                    this@LoginActivity,
+                    mutableListOf("public_profile", "email")
+                )
+            }
+
+//            loginFbButton.setReadPermissions("email", "public_profile")
+//            loginFbButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+//                override fun onSuccess(loginResult: LoginResult) {
+//                    Log.d(TAG, "facebook:onSuccess:$loginResult")
+//                    handleFacebookAccessToken(loginResult.accessToken)
+//                }
+//
+//                override fun onCancel() {
+//                    Log.d(TAG, "facebook:onCancel")
+//                }
+//
+//                override fun onError(error: FacebookException) {
+//                    Log.d(TAG, "facebook:onError", error)
+//                }
+//            })
 
         }
     }
@@ -111,6 +138,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     user?.let {
+                        Toast.makeText(this, "Login Successfull, please wait", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     }
                 } else {
@@ -125,9 +153,9 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun handleFacebookAccessToken(token: AccessToken) {
+    private fun handleFacebookAccessToken(token: AccessToken?) {
         Log.d(TAG, "handleFacebookAccessToken:$token")
-        val credential = FacebookAuthProvider.getCredential(token.token)
+        val credential = FacebookAuthProvider.getCredential(token?.token ?: "")
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -135,6 +163,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     user?.let {
+                        Toast.makeText(this, "Login Successfull, please wait", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     }
                 } else {
