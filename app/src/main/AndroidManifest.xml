@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.base.HomeActivity"
+            android:name=".features.homebase.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AndroidSehatqTest.NoActionBar" />
         <activity

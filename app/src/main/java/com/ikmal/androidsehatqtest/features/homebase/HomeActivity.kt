@@ -1,4 +1,4 @@
-package com.ikmal.androidsehatqtest.features.base
+package com.ikmal.androidsehatqtest.features.homebase
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

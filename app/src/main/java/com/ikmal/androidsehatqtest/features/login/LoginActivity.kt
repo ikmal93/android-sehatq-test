@@ -22,7 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.ikmal.androidsehatqtest.R
 import com.ikmal.androidsehatqtest.databinding.ActivityLoginBinding
-import com.ikmal.androidsehatqtest.features.base.HomeActivity
+import com.ikmal.androidsehatqtest.features.homebase.HomeActivity
 import java.util.*
 
 
