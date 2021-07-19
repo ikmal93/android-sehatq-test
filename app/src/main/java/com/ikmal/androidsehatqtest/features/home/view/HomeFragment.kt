@@ -59,8 +59,7 @@ class HomeFragment : Fragment() {
                     SUCCESS -> {
                         resource.data?.let { dataResponse ->
                             binding?.apply {
-                                homeProgressBar.visibility = View.GONE
-                                homeNested.visibility = View.VISIBLE
+                                setLoading(false)
 
                                 homeCategoryRecycler.setHasFixedSize(true)
                                 homeCategoryRecycler.layoutManager = LinearLayoutManager(
@@ -98,15 +97,10 @@ class HomeFragment : Fragment() {
                         }
                     }
                     ERROR -> {
-                        binding?.apply {
-                            homeProgressBar.visibility = View.GONE
-                        }
+                        setLoading(false)
                     }
                     LOADING -> {
-                        binding?.apply {
-                            homeProgressBar.visibility = View.VISIBLE
-                            homeNested.visibility = View.GONE
-                        }
+                        setLoading(true)
                     }
                 }
             }
@@ -117,6 +111,22 @@ class HomeFragment : Fragment() {
         binding?.apply {
             homeSearchCard.setOnClickListener {
                 startActivity(Intent(requireContext(), ProductSearchActivity::class.java))
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding?.apply {
+                homeProgressBar.visibility = View.VISIBLE
+                homeToolbar.visibility = View.GONE
+                homeNested.visibility = View.GONE
+            }
+        } else {
+            binding?.apply {
+                homeProgressBar.visibility = View.GONE
+                homeToolbar.visibility = View.VISIBLE
+                homeNested.visibility = View.VISIBLE
             }
         }
     }
