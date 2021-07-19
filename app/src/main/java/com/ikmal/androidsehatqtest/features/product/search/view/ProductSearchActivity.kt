@@ -55,6 +55,7 @@ class ProductSearchActivity : AppCompatActivity() {
             searchRecycler.setHasFixedSize(true)
             searchRecycler.layoutManager =
                 LinearLayoutManager(this@ProductSearchActivity)
+            searchEditText.requestFocus()
         }
 
     }
