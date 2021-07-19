@@ -7,10 +7,10 @@ import com.ikmal.androidsehatqtest.R
 
 
 fun AppCompatImageView.loadImage(uri: String) =
-    Glide.with(this).load(uri).placeholder(R.drawable.ic_launcher_background).into(this)
+    Glide.with(this).load(uri).placeholder(R.drawable.ic_placeholder).into(this)
 
 fun AppCompatImageView.loadCircularImage(uri: String) =
     Glide.with(this).load(uri).apply(RequestOptions.circleCropTransform())
-        .placeholder(R.drawable.ic_launcher_background).into(
+        .placeholder(R.drawable.ic_placeholder).into(
             this
         )
