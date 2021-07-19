@@ -46,12 +46,17 @@ class ProductSearchViewModel(
 
     private fun refreshProduct() {
         val filterKeywordValue = filterKeyword.value ?: ""
-        val filteredPromo = promoProducts.value?.data?.let {
-            it.filter { data ->
-                data.title.lowercase().contains(filterKeywordValue.lowercase())
+        var filteredPromo: List<ProductPromoEntity>? = null
+        if (filterKeywordValue.isNotEmpty()) {
+            filteredPromo = promoProducts.value?.data?.let {
+                it.filter { data ->
+                    data.title.lowercase().contains(filterKeywordValue.lowercase())
+                }
             }
+            filteredPromoProducts.postValue(Resource.success(filteredPromo ?: listOf()))
+        } else {
+            filteredPromoProducts.postValue(Resource.success(listOf()))
         }
-        filteredPromoProducts.postValue(Resource.success(filteredPromo!!))
     }
 
     fun getPromoProducts(): LiveData<Resource<List<ProductPromoEntity>>> {

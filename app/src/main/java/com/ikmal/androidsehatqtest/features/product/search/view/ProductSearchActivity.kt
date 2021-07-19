@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -94,42 +95,59 @@ class ProductSearchActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     it.data?.let { productList ->
                         binding.apply {
-                            productSearchAdapter = ProductSearchAdapter(productList.map {
-                                ProductPromo(
-                                    id = it.id,
-                                    description = it.description,
-                                    imageUrl = it.imageUrl,
-                                    loved = it.loved,
-                                    price = it.price,
-                                    title = it.title
-                                )
-                            }) {
-                                startActivity(
-                                    Intent(
-                                        this@ProductSearchActivity,
-                                        ProductDetailActivity::class.java
+                            if (productList.isNotEmpty()) {
+                                isEmptyState(false)
+                                productSearchAdapter = ProductSearchAdapter(productList.map {
+                                    ProductPromo(
+                                        id = it.id,
+                                        description = it.description,
+                                        imageUrl = it.imageUrl,
+                                        loved = it.loved,
+                                        price = it.price,
+                                        title = it.title
                                     )
-                                        .putExtra(
-                                            IntentKey.PRODUCT, ProductPromo(
-                                                id = it.id,
-                                                description = it.description,
-                                                imageUrl = it.imageUrl,
-                                                loved = it.loved,
-                                                price = it.price,
-                                                title = it.title
-                                            )
+                                }) {
+                                    startActivity(
+                                        Intent(
+                                            this@ProductSearchActivity,
+                                            ProductDetailActivity::class.java
                                         )
-                                )
+                                            .putExtra(
+                                                IntentKey.PRODUCT, ProductPromo(
+                                                    id = it.id,
+                                                    description = it.description,
+                                                    imageUrl = it.imageUrl,
+                                                    loved = it.loved,
+                                                    price = it.price,
+                                                    title = it.title
+                                                )
+                                            )
+                                    )
+                                }
+                                searchRecycler.adapter = productSearchAdapter
+                            } else {
+                                isEmptyState(true)
                             }
-                            searchRecycler.adapter = productSearchAdapter
                         }
                     }
                 }
                 Status.ERROR -> {
                 }
-                Status.LOADING -> {
-                }
             }
         })
+    }
+
+    private fun isEmptyState(isEmpty: Boolean) {
+        binding.apply {
+            if (isEmpty) {
+                searchRecycler.visibility = View.GONE
+                searchNotFound.visibility = View.VISIBLE
+                searchNotFoundText.visibility = View.VISIBLE
+            } else {
+                searchRecycler.visibility = View.VISIBLE
+                searchNotFound.visibility = View.GONE
+                searchNotFoundText.visibility = View.GONE
+            }
+        }
     }
 }
