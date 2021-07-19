@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -132,6 +133,7 @@ class ProductSearchActivity : AppCompatActivity() {
                     }
                 }
                 Status.ERROR -> {
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
                 }
             }
         })

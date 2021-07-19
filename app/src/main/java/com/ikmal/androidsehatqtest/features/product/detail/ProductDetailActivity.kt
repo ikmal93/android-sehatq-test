@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -83,8 +84,11 @@ class ProductDetailActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        Toast.makeText(this, "Transaction Success", Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                     Status.ERROR -> {
+                        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
                     }
                     Status.LOADING -> {
                     }

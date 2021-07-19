@@ -13,7 +13,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewBinding()
-        setView()
         setListener()
     }
 
@@ -21,10 +20,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-    }
-
-    private fun setView() {
-
     }
 
     private fun setListener() {

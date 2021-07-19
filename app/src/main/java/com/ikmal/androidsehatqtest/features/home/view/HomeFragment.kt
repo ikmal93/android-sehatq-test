@@ -103,6 +103,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                     ERROR -> {
+                        Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
                         setLoading(false)
                     }
                     LOADING -> {
