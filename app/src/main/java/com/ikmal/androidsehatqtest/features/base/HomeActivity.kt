@@ -59,5 +59,8 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
+
+        binding.navView.setOnItemReselectedListener {
+        }
     }
 }

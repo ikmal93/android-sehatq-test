@@ -20,14 +20,14 @@
         app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back_white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/saerch_toolbar_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="16dp">
-
 
             <EditText
                 android:id="@+id/search_edit_text"
@@ -44,6 +44,7 @@
                 android:imeOptions="actionSearch"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -4,15 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.ikmal.androidsehatqtest.core.constant.IntentKey
 import com.ikmal.androidsehatqtest.core.database.DatabaseBuilder
 import com.ikmal.androidsehatqtest.core.network.ApiBuilder
@@ -20,11 +14,9 @@ import com.ikmal.androidsehatqtest.core.utils.Status
 import com.ikmal.androidsehatqtest.core.viewmodel.ViewModelFactory
 import com.ikmal.androidsehatqtest.data.api.model.ProductPromo
 import com.ikmal.androidsehatqtest.databinding.ActivityProductSearchBinding
-import com.ikmal.androidsehatqtest.features.home.viewmodel.HomeViewModel
 import com.ikmal.androidsehatqtest.features.product.detail.ProductDetailActivity
 import com.ikmal.androidsehatqtest.features.product.search.view.adapter.ProductSearchAdapter
 import com.ikmal.androidsehatqtest.features.product.search.viewmodel.ProductSearchViewModel
-import com.ikmal.androidsehatqtest.features.profile.view.adapter.ProfileAdapter
 
 class ProductSearchActivity : AppCompatActivity() {
 
@@ -97,17 +89,6 @@ class ProductSearchActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
-        viewModel.getPromoProducts().observe(this, {
-            when (it.status) {
-                Status.SUCCESS -> {
-                }
-                Status.ERROR -> {
-                }
-                Status.LOADING -> {
-                }
-            }
-        })
-
         viewModel.getFilterProducts().observe(this, {
             when (it.status) {
                 Status.SUCCESS -> {
@@ -151,41 +132,4 @@ class ProductSearchActivity : AppCompatActivity() {
             }
         })
     }
-
-//    Log.d("KAKA", "HASIL : ${Gson().toJson(it.data)}")
-//                    it.data?.let { productList ->
-//                        binding.apply {
-//                            searchRecycler.setHasFixedSize(true)
-//                            searchRecycler.layoutManager =
-//                                LinearLayoutManager(this@ProductSearchActivity)
-//                            productSearchAdapter = ProductSearchAdapter(productList.map {
-//                                ProductPromo(
-//                                    id = it.id,
-//                                    description = it.description,
-//                                    imageUrl = it.imageUrl,
-//                                    loved = it.loved,
-//                                    price = it.price,
-//                                    title = it.title
-//                                )
-//                            }) {
-//                                startActivity(
-//                                    Intent(
-//                                        this@ProductSearchActivity,
-//                                        ProductDetailActivity::class.java
-//                                    )
-//                                        .putExtra(
-//                                            IntentKey.PRODUCT, ProductPromo(
-//                                                id = it.id,
-//                                                description = it.description,
-//                                                imageUrl = it.imageUrl,
-//                                                loved = it.loved,
-//                                                price = it.price,
-//                                                title = it.title
-//                                            )
-//                                        )
-//                                )
-//                            }
-//                            searchRecycler.adapter = productSearchAdapter
-//                        }
-//                    }
 }
